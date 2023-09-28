@@ -1,0 +1,80 @@
+openapi: 3.0.3
+info:
+  title: Doctor Service v1
+  description: |-
+    API for Doctor Service
+  termsOfService: http://swagger.io/terms/
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+tags:
+  - name: Doctor
+    description: specialist who sees patient for a certain domain of expertise
+paths:
+  /api/v1/doctor:
+    get:
+      tags:
+        - Doctor
+      summary: Get all Doctors from the system
+      description: Get all Doctors from the system
+      operationId: getDoctors
+      parameters:
+        - in: query
+          name: fieldOfExpertise
+          schema:
+            type: string
+          description: Return all doctors that match this fieldOfExpertise
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Doctors'
+        '500':
+          description: Internal Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      
+components:
+  schemas:
+    Doctors:
+      type: array
+      items:
+        $ref: '#/components/schemas/Doctor'       
+    Doctor:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        firstName:
+          type: string
+          example: 'Emily'
+        lastName:
+          type: string
+          example: 'Williams'
+        age:
+          type: integer
+          example: 43
+        fieldOfExpertise:
+          type: string
+          example: 'Gastrology'
+        address:
+          type: string
+          example: 'Naamsestraat 17, 300 Leuven'
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: 'Functional code specifying the error'
+          example: '2300'
+        message:
+          type: string
+          description: 'Brief explanation about the error, for more information consult the Doctor Service team'
+  
