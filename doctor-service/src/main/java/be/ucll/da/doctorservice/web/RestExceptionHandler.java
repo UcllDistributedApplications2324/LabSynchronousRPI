@@ -1,7 +1,7 @@
 package be.ucll.da.doctorservice.web;
 
+import be.ucll.da.doctorservice.api.model.ApiError;
 import be.ucll.da.doctorservice.domain.NoFieldOfExpertiseException;
-import be.ucll.da.doctorservice.model.Error;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,8 +11,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({NoFieldOfExpertiseException.class})
-    public ResponseEntity<Error> handleNoFieldOfExpertiseException() {
-        Error error = new Error();
+    public ResponseEntity<ApiError> handleNoFieldOfExpertiseException() {
+        ApiError error = new ApiError();
         error.setCode("12");
         error.setMessage("FieldOfExpertise should not be empty");
 

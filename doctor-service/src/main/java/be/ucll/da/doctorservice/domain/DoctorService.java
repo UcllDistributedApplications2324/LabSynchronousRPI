@@ -1,7 +1,7 @@
 package be.ucll.da.doctorservice.domain;
 
-import be.ucll.da.doctorservice.model.Doctor;
-import be.ucll.da.doctorservice.model.Doctors;
+import be.ucll.da.doctorservice.api.model.ApiDoctor;
+import be.ucll.da.doctorservice.api.model.ApiDoctors;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Component
 public class DoctorService {
 
-    public List<Doctor> getDoctors(String fieldOfExpertise) {
+    public List<ApiDoctor> getDoctors(String fieldOfExpertise) {
         if (fieldOfExpertise == null || fieldOfExpertise.isEmpty()) {
             throw new NoFieldOfExpertiseException("FieldOfExpertise is empty");
         }
@@ -20,10 +20,10 @@ public class DoctorService {
                 .collect(Collectors.toList());
     }
 
-    private List<Doctor> getAllDoctors() {
-        Doctors doctors = new Doctors();
+    private List<ApiDoctor> getAllDoctors() {
+        ApiDoctors doctors = new ApiDoctors();
         doctors.add(
-                new Doctor()
+                new ApiDoctor()
                         .id(1L)
                         .fieldOfExpertise("Cardiologie")
                         .firstName("Juliette")
@@ -31,7 +31,7 @@ public class DoctorService {
                         .age(32)
                         .address("Rue du Centre 259, 3000 Leuven, Belgium"));
         doctors.add(
-                new Doctor()
+                new ApiDoctor()
                         .id(2L)
                         .fieldOfExpertise("Dermatologie")
                         .firstName("Preston")
@@ -39,7 +39,7 @@ public class DoctorService {
                         .age(45)
                         .address("Avenue Emile Vandervelde 465, 3000 Leuven, Belgium"));
         doctors.add(
-                new Doctor()
+                new ApiDoctor()
                         .id(1L)
                         .fieldOfExpertise("Gynaecologie")
                         .firstName("Katrina")
