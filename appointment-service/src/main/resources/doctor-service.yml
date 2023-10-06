@@ -31,21 +31,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Doctors'
+                $ref: '#/components/schemas/ApiDoctors'
         '500':
           description: Internal Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ApiError'
       
 components:
   schemas:
-    Doctors:
+    ApiDoctors:
       type: array
       items:
-        $ref: '#/components/schemas/Doctor'       
-    Doctor:
+        $ref: '#/components/schemas/ApiDoctor'
+    ApiDoctor:
       type: object
       properties:
         id:
@@ -67,7 +67,7 @@ components:
         address:
           type: string
           example: 'Naamsestraat 17, 300 Leuven'
-    Error:
+    ApiError:
       type: object
       properties:
         code:

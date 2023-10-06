@@ -108,7 +108,7 @@
 							<inputSpec>${project.basedir}/src/main/resources/appointment-service.yml</inputSpec>
 							<generatorName>spring</generatorName>
 							<apiPackage>be.ucll.da.appointmentservice.api</apiPackage>
-							<modelPackage>be.ucll.da.appointmentservice.model</modelPackage>
+							<modelPackage>be.ucll.da.appointmentservice.api.model</modelPackage>
 							<supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
 							<generateAliasAsModel>true</generateAliasAsModel>
 							<configOptions>
@@ -144,7 +144,7 @@
 							<skipValidateSpec>true</skipValidateSpec>
 							<generateSupportingFiles>true</generateSupportingFiles>
 							<apiPackage>be.ucll.da.appointmentservice.client.doctor.api</apiPackage>
-							<modelPackage>be.ucll.da.appointmentservice.client.doctor.model</modelPackage>
+							<modelPackage>be.ucll.da.appointmentservice.client.doctor.api.model</modelPackage>
 
 							<configOptions>
 								<dateLibrary>java8</dateLibrary>

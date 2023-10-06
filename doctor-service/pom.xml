@@ -85,7 +85,7 @@
 							<inputSpec>${project.basedir}/src/main/resources/doctor-service.yml</inputSpec>
 							<generatorName>spring</generatorName>
 							<apiPackage>be.ucll.da.doctorservice.api</apiPackage>
-							<modelPackage>be.ucll.da.doctorservice.model</modelPackage>
+							<modelPackage>be.ucll.da.doctorservice.api.model</modelPackage>
 							<supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
 							<generateAliasAsModel>true</generateAliasAsModel>
 							<configOptions>

@@ -1,8 +1,8 @@
 package be.ucll.da.appointmentservice.domain;
 
+import be.ucll.da.appointmentservice.api.model.ApiAppointment;
 import be.ucll.da.appointmentservice.client.doctor.api.DoctorApi;
-import be.ucll.da.appointmentservice.client.doctor.model.Doctor;
-import be.ucll.da.appointmentservice.model.CreateAppointment;
+import be.ucll.da.appointmentservice.client.doctor.api.model.ApiDoctor;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +28,15 @@ public class AppointmentService {
     private EurekaClient discoveryClient;
 
 
-    public void createAppointment(CreateAppointment data) {
+    public void createAppointment(ApiAppointment data) {
         InstanceInfo instance = discoveryClient.getNextServerFromEureka("doctor-service", false);
         doctorApi.getApiClient().setBasePath(instance.getHomePageUrl());
 
-        List<Doctor> doctors = circuitBreakerFactory.create("doctorApi")
+        List<ApiDoctor> doctors = circuitBreakerFactory.create("doctorApi")
                 .run(() ->  doctorApi.getDoctors(data.getNeededExpertise()), throwable -> new ArrayList<>());
 
-        Doctor selectedDoctor = null;
-        for (Doctor doctor : doctors) {
+        ApiDoctor selectedDoctor = null;
+        for (ApiDoctor doctor : doctors) {
             List<Appointment> appointments = repository.getAppointmentByDoctorAndPreferredDay(doctor.getId(), data.getPreferredDay());
 
             if (appointments.isEmpty()) {

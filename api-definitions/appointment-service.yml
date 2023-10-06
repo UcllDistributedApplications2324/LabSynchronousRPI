@@ -23,7 +23,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateAppointment'
+              $ref: '#/components/schemas/ApiAppointment'
       responses:
         '200':
           description: Successful operation
@@ -32,11 +32,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ApiError'
       
 components:
   schemas:
-    CreateAppointment:
+    ApiAppointment:
       type: object
       properties:
         neededExpertise:
@@ -52,7 +52,7 @@ components:
           type: string
           format: date
           example: '2023-09-21'
-    Error:
+    ApiError:
       type: object
       properties:
         code:
