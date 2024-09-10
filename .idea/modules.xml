@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/LabSynchronousRPI.iml" filepath="$PROJECT_DIR$/.idea/LabSynchronousRPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/doctor-service/doctor-service.iml" filepath="$PROJECT_DIR$/doctor-service/doctor-service.iml" />
+    </modules>
+  </component>
+</project>
